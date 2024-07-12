@@ -3,7 +3,7 @@
 import hashlib
 from unittest.mock import patch
 from fastapi.testclient import TestClient
-from main import app, cache
+from api.main import app, cache
 
 client = TestClient(app)
 

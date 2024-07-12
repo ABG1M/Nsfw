@@ -17,7 +17,6 @@ from models import (
     ImageUrlsRequest,
 )
 
-
 app = FastAPI()
 
 logging.basicConfig(
@@ -53,6 +52,13 @@ async def download_image(image_url: str) -> bytes:
 def hash_data(data):
     """Function for hashing image data."""
     return hashlib.sha256(data).hexdigest()
+
+
+@app.get("/", tags=["Root"])
+async def read_root():
+    return {
+        "message": "I am alive!"
+    }
 
 
 @app.post("/v1/detect", response_model=FileImageDetectionResponse)
